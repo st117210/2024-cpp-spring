@@ -1,19 +1,15 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib>
 #include <ctime> 
 #include <fstream>
 #include <cmath>
 
-extern const int WINDOW_WIDTH;
-extern const int WINDOW_HEIGHT;
-extern const int GRID_SIZE;
+
 extern int numVertices;
 extern int** Matrix;
 extern int heuristics;
-extern const double PI;
 
 struct SNode
 {
@@ -70,7 +66,6 @@ private:
 	SNode* finish(SNode*& new_reachable, std::pair<int, int> begin, std::pair<int, int> end, SNode*& _node, SNode*& goal_node, SNode*& node, SNode*& explored, SNode*& reachable);
 
 	SNode* Push_front(SNode*& head, SNode*& parent, std::pair<int, int> vertex, int cost);
-	SNode* Pop_front(SNode*& head);
 	bool isInList(SNode*& head, std::pair<int, int> vertex, int cost);
 	SNode* findNode(SNode*& head, std::pair<int, int> vertex, int cost);
 	void removeNode(SNode*& head, std::pair<int, int> vertex, int cost);

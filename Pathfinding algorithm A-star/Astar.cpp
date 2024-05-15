@@ -25,6 +25,21 @@ SNode::~SNode()
 	parent = nullptr;
 }
 
+CAlgorithm::CAlgorithm() : _node(nullptr), _reachable(nullptr), _explored(nullptr) {}
+
+CAlgorithm::CAlgorithm(SNode* node, SNode* reachable, SNode* explored) : _node(node), _reachable(reachable), _explored(explored) {}
+
+CAlgorithm::CAlgorithm(const CAlgorithm& other) : _node(other._node), _reachable(other._reachable), _explored(other._explored) {}
+
+CAlgorithm::CAlgorithm(CAlgorithm&& other) noexcept : _node(std::move(other._node)), _reachable(std::move(other._reachable)), _explored(std::move(other._explored)) {}
+
+CAlgorithm::~CAlgorithm()
+{
+	deleteNode(_explored);
+	deleteNode(_reachable);
+	deleteNode(_node);
+}
+
 SNode* CAlgorithm::Push_front(SNode*& head, SNode*& parent, std::pair<int, int> vertex, int cost)
 {
 	SNode* newNode = new SNode(vertex, cost);
@@ -33,17 +48,6 @@ SNode* CAlgorithm::Push_front(SNode*& head, SNode*& parent, std::pair<int, int> 
 	return newNode;
 }
 
-SNode* CAlgorithm::Pop_front(SNode*& head)
-{
-	if (head == nullptr)
-	{
-		return nullptr;
-	}
-
-	SNode* newHead = head->next;
-	delete head;
-	return newHead;
-}
 
 bool CAlgorithm::isInList(SNode*& head, std::pair<int, int> vertex, int cost)
 {
@@ -123,20 +127,6 @@ std::ostream& operator<<(std::ostream& os, SNode*& head)
 	return os;
 }
 
-CAlgorithm::CAlgorithm() : _node(nullptr), _reachable(nullptr), _explored(nullptr) {}
-
-CAlgorithm::CAlgorithm(SNode* node, SNode* reachable, SNode* explored) : _node(node), _reachable(reachable), _explored(explored) {}
-
-CAlgorithm::CAlgorithm(const CAlgorithm& other) : _node(other._node), _reachable(other._reachable), _explored(other._explored) {}
-
-CAlgorithm::CAlgorithm(CAlgorithm&& other) noexcept : _node(std::move(other._node)), _reachable(std::move(other._reachable)), _explored(std::move(other._explored)) {}
-
-CAlgorithm::~CAlgorithm() 
-{
-	deleteNode(_explored);
-	deleteNode(_reachable);
-	deleteNode(_node);
-}
 
 SNode* CAlgorithm::A_star(std::pair<int, int> begin, std::pair<int, int> end)
 {

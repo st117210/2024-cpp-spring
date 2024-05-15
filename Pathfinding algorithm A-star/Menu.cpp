@@ -1,6 +1,7 @@
 #include"Astar.h"
 #include"Menu.h"
 
+
 GridVisualizer::GridVisualizer(sf::RenderWindow& window, int numVertices, float cellSize, float padding)
 	: window(window), numVer(numVertices), cellSize(cellSize), padding(padding)
 {
@@ -113,6 +114,7 @@ void printMenu()
 	std::cout << "Начало пути на карте отмечается синим цветом, конец пути - красным" << std::endl;
 	std::cout << "Искомый путь отмечается зелеными кружками на сетке карты" << std::endl;
 	std::cout << "Розовыми квадратами отмечается работа алгоритма, то есть те клетки, которые обработал алгоритм поиска пути А*" << std::endl;
+	std::cout << "Черным цветом отмечаются стены, через которые нельзя пройти" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Искомый путь выводится в консоль и в файл output.txt" << std::endl;
 	std::cout << std::endl;

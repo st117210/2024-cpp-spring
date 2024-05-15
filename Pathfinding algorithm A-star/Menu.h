@@ -1,5 +1,12 @@
 #pragma once
+
+#include <SFML/Graphics.hpp>
+
 #include"Astar.h"
+
+extern const int WINDOW_WIDTH;
+extern const int WINDOW_HEIGHT;
+extern const double PI;
 
 class GridVisualizer
 {

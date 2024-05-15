@@ -3,7 +3,6 @@
 
 const int WINDOW_WIDTH = 1366;
 const int WINDOW_HEIGHT = 900;
-const int GRID_SIZE = 10;
 int numVertices = 0;
 int** Matrix = nullptr;
 int heuristics = 0;
